@@ -60,7 +60,7 @@ mem-free:
 #### Model ####
 
 base:
-	python3 data/scripts/convert_llama_weights_to_hf.py \
+	python3 scripts/convert_llama_weights_to_hf.py \
       --input_dir ./data/llama --model_size 7B --output_dir ./data/llama-7b-base
 
 model:
