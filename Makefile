@@ -11,7 +11,7 @@ ws-clone:
 	ssh trial@$(REMOTE_IP) \
 	    "cd workspace; \
 		 GIT_SSH_COMMAND='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no' \
-		 git clone git@github.com:lm-sys/FastChat.git; "
+		 git clone git@github.com:yantao0527/FastChat.git; "
 
 ws-makefile:
 	scp Makefile trial@${REMOTE_IP}:workspace/FastChat
@@ -56,6 +56,14 @@ web-server:
 
 mem-free:
 	free -h
+
+backgroup:
+	-mkdir log
+	python3 -m fastchat.serve.controller > log/controller.log 2>&1 &
+	python3 -m fastchat.serve.model_worker --model-path data/vicuna-7b --device cpu > log/worker.log 2>&1 &
+
+show-process:
+	ps -u trial -f | grep "python3 -m"|grep -v "grep"
 
 #### Model ####
 
