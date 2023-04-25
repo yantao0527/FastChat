@@ -76,6 +76,9 @@ kill-web-server:
 
 kill-all: kill-web-server kill-worker kill-controller
 
+clean-log:
+	rm *.log 2023-*-*-conv.json
+	
 #### Model ####
 
 base:
