@@ -63,7 +63,7 @@ backgroup:
 	python3 -m fastchat.serve.model_worker --model-path data/vicuna-7b --device cpu > log/worker.log 2>&1 &
 
 show-process:
-	ps -u trial -f | grep "python3 -m"|grep -v "grep"
+	ps -u $(USER) -f | grep "python3 -m"|grep -v "grep"
 
 kill-controller:
 	ps -u $(USER) -f | grep "python3 -m fastchat.serve.controller" | grep -v "grep" | awk '{print "kill -9", $$2}' | sh
