@@ -65,6 +65,17 @@ backgroup:
 show-process:
 	ps -u trial -f | grep "python3 -m"|grep -v "grep"
 
+kill-controller:
+	ps -u $(USER) -f | grep "python3 -m fastchat.serve.controller" | grep -v "grep" | awk '{print "kill -9", $$2}' | sh
+
+kill-worker:
+	ps -u $(USER) -f | grep "python3 -m fastchat.serve.model_worker" | grep -v "grep" | awk '{print "kill -9", $$2}' | sh
+
+kill-web-server:
+	ps -u $(USER) -f | grep "python3 -m fastchat.serve.gradio_web_server" | grep -v "grep" | awk '{print "kill -9", $$2}' | sh
+
+kill-all: kill-web-server kill-worker kill-controller
+
 #### Model ####
 
 base:
