@@ -5,11 +5,11 @@ on:
     types: [published]
 
 jobs:
-  build-and-publish:
+  pypi:
     runs-on: ubuntu-latest
     steps:
     - name: Check out repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     
     - name: Set up Python
       uses: actions/setup-python@v2
