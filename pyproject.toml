@@ -5,8 +5,8 @@ build-backend = "setuptools.build_meta"
 [tool.setuptools_scm]
 
 [project]
-name = "fschat"
-version = "0.2.3"
+name = "ytchat"
+version = "0.0.1"
 description = "An open platform for training, serving, and evaluating large language model based chatbots."
 readme = "README.md"
 requires-python = ">=3.8"
@@ -25,8 +25,8 @@ dependencies = [
 dev = ["black==23.3.0", "pylint==2.8.2"]
 
 [project.urls]
-"Homepage" = "https://github.com/lm-sys/fastchat"
-"Bug Tracker" = "https://github.com/lm-sys/fastchat/issues"
+"Homepage" = "https://github.com/yantao0527/fastchat"
+"Bug Tracker" = "https://github.com/yantao0527/fastchat/issues"
 
 [tool.setuptools.packages.find]
 exclude = ["assets*", "benchmark*", "docs", "dist*", "playground*", "scripts*", "tests*"]
