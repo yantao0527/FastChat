@@ -1,0 +1,40 @@
+name: Manual Release
+
+on: workflow_dispatch
+
+jobs:
+  manual-release:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.11
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install setuptools_scm
+        pip install build
+
+    - name: Build package
+      run: python -m build
+
+    - name: Get the version
+      id: get_version
+      run: echo ::set-output name=VERSION::$(python -c "import setuptools_scm; print(setuptools_scm.get_version())")
+
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+      with:
+        tag_name: v${{ github.event.inputs.version }}
+        release_name: Release ${{ github.event.inputs.version }}
+        body: Manual release for version ${{ github.event.inputs.version }}.
+        draft: false
+        prerelease: false
