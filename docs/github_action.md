@@ -19,4 +19,5 @@ The workflow `auto_release.yml` was created to automatically create a new releas
 ## TODO
 
 - Enhance to diplay tag name on title of workflow log when running `Manual Release`.
+- Use dynamic version in pyproject.toml 
 
