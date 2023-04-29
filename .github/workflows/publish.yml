@@ -5,7 +5,7 @@ on:
     types: [published]
 
 jobs:
-  pypi:
+  build-and-publish:
     runs-on: ubuntu-latest
     steps:
     - name: Check out repository
