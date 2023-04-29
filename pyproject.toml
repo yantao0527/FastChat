@@ -3,12 +3,13 @@ requires = ["setuptools>=61.0", "setuptools_scm[toml]>=6.2"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools_scm]
+local_scheme = "no-local-version"
 write_to = "fastchat/version.py"
 
 [project]
 name = "ytchat"
-version = "0.0.6"
-# dynamic = ["version"]
+# version = "0.0.7.dev"
+dynamic = ["version"]
 description = "An open platform for training, serving, and evaluating large language model based chatbots."
 readme = "README.md"
 requires-python = ">=3.8"
