@@ -27,7 +27,7 @@ jobs:
 
     - name: Get the version
       id: get_version
-      run: echo ::set-output name=VERSION::$(python -c "import setuptools_scm; print(setuptools_scm.get_version())")
+      run: echo ::set-output name=VERSION::$(python -c "import setuptools_scm; print(setuptools_scm.get_version().split('+')[0])")
 
     - name: Create Release
       id: create_release
