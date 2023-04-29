@@ -33,8 +33,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
       with:
-        tag_name: v${{ github.event.inputs.version }}
-        release_name: Release ${{ github.event.inputs.version }}
-        body: Manual release for version ${{ github.event.inputs.version }}.
+        tag_name: v${{ steps.get_version.outputs.VERSION }}
+        release_name: Release ${{ steps.get_version.outputs.VERSION }}
+        body: Manual release for version ${{ steps.get_version.outputs.VERSION }}.
         draft: false
         prerelease: false
