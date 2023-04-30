@@ -1,11 +1,6 @@
 name: Manual Release
 
-on:
-  workflow_dispatch:
-    inputs:
-      version:
-        description: 'Release version'
-        required: true
+on: workflow_dispatch
 
 jobs:
   manual-release:
@@ -29,15 +24,19 @@ jobs:
     - name: Build package
       run: python -m build
 
+    - name: Get the version
+      id: get_version
+      run: echo ::set-output name=VERSION::$(grep "^version" pyproject.toml | awk '{print $3}' | sed s/\"//g)
+
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
       with:
-        tag_name: ${{ github.event.inputs.version }}
-        release_name: Release ${{ github.event.inputs.version }}
-        body: Manual release for version ${{ github.event.inputs.version }}.
+        tag_name: v${{ steps.get_version.outputs.VERSION }}
+        release_name: Release v${{ steps.get_version.outputs.VERSION }}
+        body: Manual release for version v${{ steps.get_version.outputs.VERSION }}.
         draft: false
         prerelease: false
 
