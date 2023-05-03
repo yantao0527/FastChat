@@ -34,6 +34,8 @@ The workflow `auto_release.yml` was created to automatically create a new releas
 
 Use semantic versioning for Git tags. For example when you manual release `0.0.12` it creates Git tag `v0.0.12`. Then pull request with label 'release' trigger auto release to create Git tag `v0.0.13.dev16`. I recommend that the next formal version is set `0.0.14`. 
 
+It can't work! Why?
+
 ## Roadmap
 
 - [ ] Enhance to diplay tag name on title of workflow log when running `Manual Release`.
