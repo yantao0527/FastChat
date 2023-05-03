@@ -44,6 +44,9 @@ jobs:
         draft: false
         prerelease: false
 
+    - name: Fetch new tag
+      run: git fetch origin
+
     - name: Build package
       run: python -m build
 
