@@ -30,6 +30,9 @@ GitHub Actions will run the workflow, create a new release with the specified ve
 
 The workflow `auto_release.yml` was created to automatically create a new release when a pull request with the label 'release' is merged into the main branch. Auto release doesn't publish package to PyPI.
 
+## Git tags
+
+Use semantic versioning for Git tags. For example when you manual release `0.0.12` it creates Git tag `v0.0.12`. Then pull request with label 'release' trigger auto release to create Git tag `v0.0.13.dev16`. I recommend that the next formal version is set `0.0.14`. 
 
 ## Roadmap
 
