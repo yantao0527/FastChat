@@ -28,9 +28,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install setuptools_scm build
 
-    - name: Build package
-      run: python -m build
-
     - name: Get the version
       id: get_version
       run: echo ::set-output name=VERSION::$(python -c "import setuptools_scm; print(setuptools_scm.get_version().split('+')[0])")
@@ -46,6 +43,9 @@ jobs:
         body: Auto-generated release for version v${{ steps.get_version.outputs.VERSION }}.
         draft: false
         prerelease: false
+
+    - name: Build package
+      run: python -m build
 
     - name: Publish to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
