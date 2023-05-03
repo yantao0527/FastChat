@@ -31,9 +31,9 @@ GitHub Actions will run the workflow, create a new release with the specified ve
 The workflow `auto_release.yml` was created to automatically create a new release when a pull request with the label 'release' is merged into the main branch. Auto release doesn't publish package to PyPI.
 
 
-## TODO
+## Roadmap
 
-- Enhance to diplay tag name on title of workflow log when running `Manual Release`.
-- Research dynamic version in pyproject.toml 
-- Add test workflow
+- [ ] Enhance to diplay tag name on title of workflow log when running `Manual Release`.
+- [ ] Research dynamic version in pyproject.toml 
+- [ ] Add test workflow
 
