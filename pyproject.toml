@@ -8,9 +8,9 @@ write_to = "fastchat/version.py"
 
 [project]
 name = "ytchat"
-version = "0.0.13.dev17"
+# version = "0.0.13.dev17"
 # version = "0.0.12"
-# dynamic = ["version"]
+dynamic = ["version"]
 description = "An open platform for training, serving, and evaluating large language model based chatbots."
 readme = "README.md"
 requires-python = ">=3.8"
