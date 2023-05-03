@@ -4,6 +4,8 @@
 
 When starting a new Python project on GitHub, it's a good practice to follow a version management policy that adheres to semantic versioning, is automated, and makes it easy to maintain and understand the project's release history. One of the widely adopted version management policies for Python projects is using setuptools_scm with semantic versioning and Git tags.
 
+To keep version management simple, we still use static version in `pyproject.toml` to release the formal version manually. We use auto release to release the dev version that get from setuptools_scm.
+
 ## Set up secrets
 
 1. Store your PyPI API token as a secret in your GitHub repository. Go to your repository's "Settings" tab, click on "Secrets and variables → Actions" in the left menu, and then click the "New repository secret" button. Create a new secret named `PYPI_API_TOKEN` and paste your PyPI API token as the value.
@@ -26,12 +28,12 @@ GitHub Actions will run the workflow, create a new release with the specified ve
 
 **Auto Release**
 
-The workflow `auto_release.yml` was created to automatically create a new release when a pull request with the label 'release' is merged into the main branch. 
+The workflow `auto_release.yml` was created to automatically create a new release when a pull request with the label 'release' is merged into the main branch. Auto release doesn't publish package to PyPI.
 
 
 ## TODO
 
 - Enhance to diplay tag name on title of workflow log when running `Manual Release`.
-- Use dynamic version in pyproject.toml 
+- Research dynamic version in pyproject.toml 
 - Add test workflow
 
