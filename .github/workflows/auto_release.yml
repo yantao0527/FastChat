@@ -43,3 +43,10 @@ jobs:
         body: Auto-generated release for version v${{ steps.get_version.outputs.VERSION }}.
         draft: false
         prerelease: false
+
+    - name: Publish to PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        user: __token__
+        password: ${{ secrets.PYPI_API_TOKEN }}
+
