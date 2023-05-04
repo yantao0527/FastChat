@@ -4,8 +4,6 @@
 
 When starting a new Python project on GitHub, it's a good practice to follow a version management policy that adheres to semantic versioning, is automated, and makes it easy to maintain and understand the project's release history. One of the widely adopted version management policies for Python projects is using setuptools_scm with semantic versioning and Git tags.
 
-To keep version management simple, we still use static version in `pyproject.toml` to release the formal version manually. We use auto release to release the dev version that get from setuptools_scm.
-
 ## Set up secrets
 
 1. Store your PyPI API token as a secret in your GitHub repository. Go to your repository's "Settings" tab, click on "Secrets and variables → Actions" in the left menu, and then click the "New repository secret" button. Create a new secret named `PYPI_API_TOKEN` and paste your PyPI API token as the value.
@@ -17,28 +15,33 @@ To keep version management simple, we still use static version in `pyproject.tom
 
 To trigger the workflow `manual_release.yml` manually:
 
-1. Check version, like `version = "0.0.12"`, in pyproject.toml.
-2. Go to the "Actions" tab in your GitHub repository.
-3. Select the "Manual Release" workflow from the list of workflows.
-4. Click the "Run workflow" button.
-5. Choose the branch you want to run the workflow on.
+1. Go to the "Actions" tab in your GitHub repository.
+2. Select the "Manual Release" workflow from the list of workflows.
+3. Click the "Run workflow" button.
+4. Choose the branch you want to run the workflow on.
+5. Provide the next release version in the input field, or just skip.
 6. Click the "Run workflow" button to start the workflow.
 
-GitHub Actions will run the workflow, create a new release with the specified version, and publish it to PyPI.
+GitHub Actions will run the workflow, create a new release with the specified version, and publish it to PyPI. If you skip input it use setuptools_scm to guess next version.
 
 **Auto Release**
 
-The workflow `auto_release.yml` was created to automatically create a new release when a pull request with the label 'release' is merged into the main branch. Auto release doesn't publish package to PyPI.
+The workflow `auto_release.yml` was created to automatically create a new release when a pull request with the label 'release' is merged into the main branch. Auto release also publish package to PyPI.
 
 ## Git tags
 
-Use semantic versioning for Git tags. For example when you manual release `0.0.12` it creates Git tag `v0.0.12`. Then pull request with label 'release' trigger auto release to create Git tag `v0.0.13.dev16`. I recommend that the next formal version is set `0.0.14`. 
+Use semantic versioning for Git tags:
 
-It can't work! Why?
+ - Major version (X): Increment when you make incompatible API changes.
+ - Minor version (Y): Increment when you add functionality in a backward-compatible manner.
+ - Patch version (Z): Increment when you make backward-compatible bug fixes.
+
+Manual release workflow can input new release version through UI, like `0.2.0`, then create a Git tag `v0.2.0`. When skipping input version, it use setuptools_scm to guess next version. And auto release workflow also use setuptools_scm to guess nex version.
+
+Setuptools_scm only increase patch version. If you want to increase minor version or major version you have to use manual release workflow to input a new version.
 
 ## Roadmap
 
 - [ ] Enhance to diplay tag name on title of workflow log when running `Manual Release`.
-- [ ] Research dynamic version in pyproject.toml 
 - [ ] Add test workflow
 
