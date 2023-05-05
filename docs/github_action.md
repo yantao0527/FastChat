@@ -36,7 +36,7 @@ Use semantic versioning for Git tags:
  - Minor version (Y): Increment when you add functionality in a backward-compatible manner.
  - Patch version (Z): Increment when you make backward-compatible bug fixes.
 
-Manual release workflow can input new release version through UI, like `0.2.0`, then create a Git tag `v0.2.0`. When skipping input version, it use setuptools_scm to guess next version. And auto release workflow also use setuptools_scm to guess nex version.
+Manual release workflow can input new release version through UI, like `0.3.0`, then create a Git tag `v0.3.0`. When skipping input version, it use setuptools_scm to guess next version. And auto release workflow also use setuptools_scm to guess nex version.
 
 Setuptools_scm only increase patch version. If you want to increase minor version or major version you have to use manual release workflow to input a new version.
 
